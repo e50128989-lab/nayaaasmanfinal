@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Naya Aasman Foundation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0066cc, #00cc66);
+            width: 0%;
+            z-index: 1000;
+        }
+
+        /* Cursor Glow */
+        .cursor-glow {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(0, 102, 204, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999;
+            box-shadow: 0 0 20px rgba(0, 102, 204, 0.3);
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(135deg, #0066cc 0%, #00cc66 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1559027615-cd2628902d4a?w=1200&h=800&fit=crop') center/cover;
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            animation: typeWriter 3s steps(30) 0.5s forwards;
+            overflow: hidden;
+            white-space: normal;
+            width: 100;
+        }
+
+        @keyframes typeWriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            animation: fadeIn 1.5s ease-out 1s both;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin: 0 auto;
+            width: 90%;
+            max-width: 1000px;
+        }   
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeIn 1.5s ease-out 1.5s both;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b6b, #ff8787);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.5);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #51cf66, #69db7c);
+            color: white;
+            box-shadow: 0 10px 30px rgba(81, 207, 102, 0.3);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(81, 207, 102, 0.5);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            z-index: 1;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #0066cc;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #0066cc, #00cc66);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 102, 204, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), transparent);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0, 102, 204, 0.2);
+            border-color: rgba(0, 102, 204, 0.3);
+        }
+
+        .glass-card:hover::before {
+            top: -20%;
+            right: -20%;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0066cc, #00cc66);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-item:hover .contact-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .contact-info-text h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #0066cc;
+        }
+
+        .contact-info-text p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 20px rgba(0, 102, 204, 0.3);
+            background: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #0066cc, #00cc66);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
+        }
+
+        /* Why Contact Us Section */
+        .why-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.05), rgba(0, 204, 102, 0.05));
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid #0066cc;
+        }
+
+        .why-card:nth-child(2) { border-top-color: #00cc66; }
+        .why-card:nth-child(3) { border-top-color: #ff6b6b; }
+        .why-card:nth-child(4) { border-top-color: #ffd93d; }
+
+        .why-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .why-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .why-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .why-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Social Section */
+        .social-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.08), rgba(0, 204, 102, 0.08));
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .social-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            color: #0066cc;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 10px 40px rgba(0, 102, 204, 0.3);
+            background: linear-gradient(135deg, #0066cc, #00cc66);
+            color: white;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #0066cc, #00cc66);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -50px;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -30px;
+            right: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: white;
+            color: #0066cc;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            color: #00cc66;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #00cc66;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form button {
+            padding: 10px 20px;
+            background: #00cc66;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #0066cc;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            color: #999;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0066cc, #00cc66);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
+        }
+
+        /* Floating Buttons */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .floating-donate {
+            position: fixed;
+            bottom: 170px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8787);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .floating-donate:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(255, 107, 107, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .social-icons {
+                gap: 20px;
+            }
+
+            .social-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Let's Create Hope Together</h1>
+            <p>Every message, every conversation, and every helping hand brings us closer to building a stronger community.</p>
+            <div class="hero-buttons">
+              <button class="btn btn-secondary"
+onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdoHEEeg2iQK3jfkUw9FH0BPsLVIeZlTxKzeRnTHbmZfkricw/viewform?usp=sharing','_blank')">
+    <i class="fas fa-heart"></i> Become a Volunteer
+</button>
+             <button class="btn btn-secondary" onclick="scrollToSection('cta')">
+                    <i class="fas fa-heart"></i> Donate Now
+                </button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down" style="font-size: 2rem; color: white;"></i>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+        
+        <div class="contact-grid">
+            <!-- Left Card - Contact Info -->
+            <div class="glass-card" data-aos="fade-right">
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-info-text">
+                        <h3>Office Address</h3>
+                        <p>507/6,Govindpuri Rd Near C-Lal Chowk kalakji, New Delhi, India 110019</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-info-text">
+                        <h3>Phone Number</h3>
+                        <p>+91 8368849565</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-info-text">
+                        <h3>Email Address</h3>
+                        <p>nayaasmanfoundation26@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="contact-info-text">
+                        <h3>Website</h3>
+                        <p>www.nayaasmanfoundation.in</p>
+                    </div>
+                </div>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Card - Contact Form -->
+            <div class="glass-card" data-aos="fade-left">
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Contact Us Section -->
+    <section class="why-section">
+        <h2 class="section-title" data-aos="fade-up">Why Contact Us?</h2>
+        
+        <div class="why-grid">
+            <div class="why-card" data-aos="zoom-in">
+                <div class="why-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <h3>General Enquiries</h3>
+                <p>Have questions about our foundation? We're here to provide all the information you need.</p>
+            </div>
+
+            <div class="why-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="why-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3>Volunteer Opportunities</h3>
+                <p>Join our mission and make a real difference in communities that need it most.</p>
+            </div>
+
+            <div class="why-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="why-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h3>Donation Assistance</h3>
+                <p>Learn how your contributions can create lasting impact and change lives.</p>
+            </div>
+
+            <div class="why-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="why-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Partnership & CSR</h3>
+                <p>Explore collaboration opportunities with your organization or business.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <h2 class="section-title" data-aos="fade-up">Our Location</h2>
+        <div class="map-container" data-aos="zoom-in">
+            <iframe src="https://www.google.com/maps?q=House%20No.507/6,%20Govindpuri%20Road,%20Near%20C-Lal%20Chowk,%20Kalkaji,%20New%20Delhi,%20Delhi%20110019&output=embed"
+             allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+         </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section">
+        <h2 class="section-title" data-aos="fade-up">Stay Connected</h2>
+        <p style="font-size: 1.1rem; color: #666; margin-bottom: 30px;">Follow us on social media for updates and stories</p>
+        
+        <div class="social-icons">
+            <div class="social-icon" data-aos="zoom-in" onclick="window.open('https://www.facebook.com/share/1DThBAtfhg/','_blank')">
+                <i class="fab fa-facebook-f"></i>
+            </div>
+            <div class="social-icon" data-aos="zoom-in" data-aos-delay="100" onclick="window.open('https://www.instagram.com/nayaaasmanfoundation143?igsh=OGJtY2ptcmdudWdv','_blank')">
+                <i class="fab fa-instagram"></i>
+            </div>
+            
+            <div class="social-icon" data-aos="zoom-in" data-aos-delay="300" onclick="window.open('https://youtube.com/@jyotidhiman-e2y?si=2LieQbLExZByF5TI','_blank')">
+                <i class="fab fa-youtube"></i>
+            </div>
+            <div class="social-icon" data-aos="zoom-in" data-aos-delay="400" onclick="window.open('#')">
+                <i class="fab fa-twitter"></i>
+            </div>
+           
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+        <div class="cta-content" data-aos="fade-up">
+            <h2>Together We Can Change Thousands of Lives</h2>
+            <p style="font-size: 1.2rem; margin: 20px 0 40px; max-width: 600px; margin-left: auto; margin-right: auto;">Your support, whether through volunteering or donations, creates real change in our communities.</p>
+            <div class="cta-buttons">
+                <button class="cta-btn" onclick="window.location.href='donation.html'">
+                💚 Donate Today</button>
+                <button class="cta-btn" onclick="window.location.href='index.html'">
+    🙌 Join Our Mission
+</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>About Foundation</h3>
+                <p>Naya Aasman Foundation is dedicated to creating positive change in communities through education, healthcare, and social welfare programs.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                 <li><a href="index.html">Home</a></li>                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Programmes</h3>
+                <ul>
+                    <li><a href="#">Education Initiative</a></li>
+                    <li><a href="#">Healthcare Support</a></li>
+                    <li><a href="#">Community Development</a></li>
+                    <li><a href="#">Youth Training</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get updates about our latest initiatives and impact stories.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your email">
+                    <button type="button">Subscribe</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Naya Aasman Foundation. All rights reserved. | <a href="#" style="color: #00cc66; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: #00cc66; text-decoration: none;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-whatsapp" onclick="window.open('https://wa.me/918368849565')">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <div class="floating-donate" onclick="scrollToSection('cta')">
+        <i class="fas fa-heart"></i>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true
+        });
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.querySelector('.scroll-progress').style.width = scrollPercent + '%';
+
+            // Show/Hide Back to Top Button
+            const backToTop = document.getElementById('backToTop');
+            if (scrollTop > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        // Cursor Glow Effect
+        const cursorGlow = document.querySelector('.cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX - 20 + 'px';
+            cursorGlow.style.top = e.clientY - 20 + 'px';
+            cursorGlow.style.display = 'block';
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursorGlow.style.display = 'none';
+        });
+
+        // Smooth Scroll
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Back to Top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Form Submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            // Show success animation
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            submitBtn.style.background = 'linear-gradient(135deg, #51cf66, #69db7c)';
+            
+            // Reset form
+            form.reset();
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.style.background = 'linear-gradient(135deg, #0066cc, #00cc66)';
+            }, 3000);
+        }
+
+        // Parallax Effect on Scroll
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrollPosition = window.scrollY;
+            hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+        });
+    </script>
+</body>
+</html>

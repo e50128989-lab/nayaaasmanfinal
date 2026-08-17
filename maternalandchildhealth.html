@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Details | Professional Course</title>
+    <style>
+        /* ==========================================
+           PROGRAM DETAILS PAGE
+        ========================================== */
+
+        body{
+            margin:0;
+            padding:0;
+            font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+            background:#f5f7fa;
+        }
+
+        /* Main Section */
+
+        .program-section{
+            padding:70px 5%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Container */
+
+        .program-container{
+            max-width:1200px;
+            margin:0 auto;
+            display:flex;
+            align-items:flex-start;
+            justify-content:space-between;
+            gap:60px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        /* Left Image */
+
+        .program-image{
+            flex:0 0 40%;
+        }
+
+        .program-image img{
+            width:100%;
+            max-width:450px;
+            height:350px;
+            object-fit:cover;
+            object-position:center;
+            border-radius:18px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.15);
+            transition:.4s ease;
+        }
+
+        .program-image img:hover{
+            transform:scale(1.03);
+        }
+
+        /* Right Content */
+
+        .program-content{
+            flex:1;
+        }
+
+        .program-content h1{
+            font-size:42px;
+            color:#0056b3;
+            margin-top:0;
+            margin-bottom:20px;
+            font-weight:700;
+        }
+
+        .program-content p{
+            font-size:18px;
+            color:#555;
+            line-height:2;
+            text-align:justify;
+        }
+
+        /* Back Button */
+
+        .back-btn{
+            display:inline-block;
+            margin-top:35px;
+            padding:14px 32px;
+            background:#0056b3;
+            color:#fff;
+            text-decoration:none;
+            border-radius:50px;
+            font-size:16px;
+            font-weight:600;
+            transition:.3s;
+        }
+
+        .back-btn:hover{
+            background:#003d82;
+            transform:translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
+        }
+
+        /* Tablet */
+
+        @media(max-width:992px){
+
+        .program-container{
+            gap:40px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .program-image img{
+            max-width:100%;
+            height:auto;
+        }
+
+        .program-content h1{
+            font-size:34px;
+        }
+
+        .program-content p{
+            font-size:17px;
+        }
+
+        }
+
+        /* Mobile */
+
+        @media(max-width:768px){
+
+        .program-section {
+            padding: 40px 20px;
+        }
+
+        .program-container{
+            padding: 25px;
+            flex-direction:column;
+            align-items:center;
+            text-align:center;
+        }
+
+        .program-image{
+            flex:100%;
+            width: 100%;
+        }
+
+        .program-image img{
+            width:100%;
+            max-width:100%;
+            height:250px;
+        }
+
+        .program-content{
+            width:100%;
+        }
+
+        .program-content h1{
+            font-size:30px;
+            margin-top:25px;
+        }
+
+        .program-content p{
+            text-align:left;
+            font-size:16px;
+            line-height:1.8;
+        }
+
+        .back-btn{
+            display:inline-block;
+            margin-top:30px;
+        }
+
+        }
+    </style>
+</head>
+<body>
+
+    <section class="program-section">
+        <div class="program-container">
+            <!-- Left Image Section -->
+            <div class="program-image">
+                <img src="images/program4.jpg">
+
+            </div>
+
+            <!-- Right Content Section -->
+            <div class="program-content">
+                <h1>Maternal and Child Health<h3
+
+                <p>
+                   The health of mothers and children forms the foundation of a healthy and prosperous community. Proper care during pregnancy and early childhood plays a crucial role in minimizing health risks and giving every child the best possible start in life. At Naya Aasman Foundation, we are committed to supporting expectant mothers, newborns, and young children through comprehensive maternal and child health initiatives. By collaborating with government health departments, public health centers, hospitals, and community partners, we strive to improve access to quality healthcare, nutrition, and essential health services for underprivileged families. Our maternal and child care program focuses on educating and empowering women by providing information on: • Proper nutrition during pregnancy and early motherhood • Prenatal and postnatal care • Safe and institutional deliveries • Breastfeeding and infant nutrition • Child immunization and preventive healthcare • Early childhood growth, development, and hygiene. Through health awareness sessions, medical consultations, nutritional support, and regular community engagement, we assist mothers in making informed healthcare decisions for themselves and their children. By promoting healthy pregnancies, safe deliveries, and proper child care, Naya Aasman Foundation aims to reduce preventable health complications, improve the well-being of mothers and children, and ensure every child has the opportunity to grow up healthy, safe, and ready to reach their full potential.
+                </p>
+                <p>
+                    Join a community 
+                </p>
+               <a href="index.html" class="back-btn">← Back to Home</a>
+
+        </div>
+    </section>
+
+</body>
+</html>
