@@ -1183,7 +1183,7 @@ CONTACT SECTION
         .footer-col p {
             color: var(--text-muted);
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 3px;
         }
 
         .footer-links {
