@@ -1282,7 +1282,7 @@ CONTACT SECTION
 
         /* Footer Bottom */
         .footer-bottom {
-         position: fixed;
+         position: static;
          bottom: 10px;
          left: 0;
          width: 100%;
