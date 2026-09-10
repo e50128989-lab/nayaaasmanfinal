@@ -1282,18 +1282,22 @@ CONTACT SECTION
 
         /* Footer Bottom */
         .footer-bottom {
-            border-top: 1px solid var(--border-color);
-            padding-top: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+         position: fixed;
+         bottom: 10px;
+         left: 0;
+         width: 100%;
+         padding: 0;
+         margin: 0;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         z-index: 99999;
+       }
 
         .footer-bottom p {
             color: var(--text-muted);
             font-size: 14px;
+            margin: 0;
         }
 
         .footer-bottom-links {
