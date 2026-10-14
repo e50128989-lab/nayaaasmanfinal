@@ -2620,3 +2620,5 @@ nav ul li a:hover::after {
         animation: none !important;
     }
 }
+
+       .nowrap{ white-space:nowrap; }
